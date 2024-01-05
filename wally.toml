@@ -1,0 +1,10 @@
+[package]
+name = "virtualbutfake/codespan"
+version = "1.1.2"
+registry = "https://github.com/VirtualButFake/lune-registry"
+realm = "shared"
+
+[dependencies]
+chalk = "virtualbutfake/chalk@0.1.1"
+terminal = "virtualbutfake/terminal@1.0.0"
+logger = "virtualbutfake/logger@1.0.1"
