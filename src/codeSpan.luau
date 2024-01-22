@@ -55,7 +55,7 @@ end
 	@type LabelStyle "Primary" | "Secondary"
 
 	The difference between these 2 styles is the following:
-	- Primary will make the range it targests the color of the severity, use the `^` character to underline the range, and take priority over secondary labels.
+	- Primary will make the range it targets the color of the severity, use the `^` character to underline the range, and take priority over secondary labels.
 	- Secondary will make the range it targets a default color (cyan), and use the `-` character to underline the range.
 ]=]
 
