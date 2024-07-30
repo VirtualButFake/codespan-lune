@@ -1,5 +1,5 @@
 [package]
-name = "virtualbutfake/codespan"
+name = "VirtualButFake/codespan-lune"
 version = "1.1.2"
 registry = "https://github.com/VirtualButFake/lune-registry"
 realm = "shared"
