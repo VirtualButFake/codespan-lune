@@ -15,7 +15,7 @@ More robust installation methods will be available in the future, but there are 
 ### Git Submodule installation
 
 1. Navigate to your project's root directory
-2. Run `git submodule add https://github.com/virtualbutfake/codespan path/to/your/submodule`
+2. Run `git submodule add https://github.com/virtualbutfake/codespan-lune path/to/your/submodule`
 3. Import the module as you normally would.
 
 ## Examples

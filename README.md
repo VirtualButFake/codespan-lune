@@ -4,8 +4,8 @@
 
 A library designed to create beautiful diagnostics for [Lune](https://github.com/filiptibell/lune).
 
-[![License](https://img.shields.io/github/license/virtualbutfake/codespan)](https://github.com/VirtualButFake/codespan/blob/master/LICENSE.md)
-[![CI](https://github.com/virtualbutfake/codespan/actions/workflows/ci.yaml/badge.svg)](https://github.com/virtualbutfake/codespan/actions)
+[![License](https://img.shields.io/github/license/virtualbutfake/codespan-lune)](https://github.com/virtualbutfake/codespan-lune/blob/master/LICENSE.md)
+[![CI](https://github.com/virtualbutfake/codespan-lune/actions/workflows/ci.yaml/badge.svg)](https://github.com/virtualbutfake/codespan-lune/actions)
 
 </div>
 
@@ -21,4 +21,4 @@ Documentation is available [here](https://docs.tijne.net/codespan).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/virtualbutfake/codespan/blob/master/LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/virtualbutfake/codespan-lune/blob/master/LICENSE.md) file for details.
