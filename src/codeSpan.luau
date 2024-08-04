@@ -39,7 +39,7 @@ end
 --[=[
 	@within CodeSpan
 	@method addRange
-	@param passedRange fileRange
+	@param passedRange FileRange
 	@return CodeSpan
 
 	Adds a range to the CodeSpan object.
@@ -63,7 +63,7 @@ end
 	@within CodeSpan
 	@method addLabel
 	@param style LabelStyle
-	@param passedRange fileRange
+	@param passedRange FileRange
 	@param content string
 	@return CodeSpan
 
@@ -109,7 +109,7 @@ end
 --[=[
 	@within CodeSpan
 	@method addColor
-	@param passedRange fileRange
+	@param passedRange FileRange
 	@param color { chalkColor }
 	@return CodeSpan
 
