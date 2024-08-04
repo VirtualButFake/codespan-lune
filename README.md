@@ -13,7 +13,7 @@ A library designed to create beautiful diagnostics for [Lune](https://github.com
 
 This library is a port of [codespan](https://github.com/brendanzab/codespan) visually, with a different API to fit Luau better. 
 
-Due to the current lack of a truly robust package manager for Lune, this library will be distributed simply as a file. The recommended approach is to add CodeSpan as a Git submodule to your project. A guide on how to do this can be found in the `Installation` section of the documentation.
+Due to the current lack of a truly robust package manager for Lune, this library will be distributed without a package manager. The recommended approach is to add CodeSpan as a Git submodule to your project. A guide on how to do this can be found in the `Installation` section of the documentation.
 
 ## Documentation
 
