@@ -1,6 +1,24 @@
+<div align="center">
+
 # CodeSpan
 
 A library designed to create beautiful diagnostics for [Lune](https://github.com/filiptibell/lune).
-This library is meant to be a port of [codespan-reporting](https://github.com/brendanzab/codespan), a similiar library for Rust.
+
+[![License](https://img.shields.io/github/license/virtualbutfake/codespan)](https://github.com/VirtualButFake/codespan/blob/master/LICENSE.md)
+[![CI](https://github.com/virtualbutfake/codespan/actions/workflows/ci.yaml/badge.svg)](https://github.com/virtualbutfake/codespan/actions)
+
+</div>
+
+## Getting Started
+
+This library is a port of [codespan](https://github.com/brendanzab/codespan) visually, with a different API to fit Luau better. 
+
+Due to the current lack of a truly robust package manager for Lune, this library will be distributed simply as a file. The recommended approach is to add CodeSpan as a Git submodule to your project. A guide on how to do this can be found in the `Installation` section of the documentation.
+
+## Documentation
 
 Documentation is available [here](https://docs.tijne.net/codespan).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/virtualbutfake/codespan/blob/master/LICENSE.md) file for details.

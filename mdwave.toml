@@ -1,5 +1,5 @@
 title = "CodeSpan"
-description = "A beautiful diagnostics library, inspired by codespan-reporting for Rust"
+description = "A beautiful diagnostics library, inspired by codespan for Rust"
 gitRepoUrl = "https://github.com/VirtualButFake/codespan-lune"
 gitSourceBranch = "master"
 nestSections = true

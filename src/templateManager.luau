@@ -1,4 +1,4 @@
-local chalk = require("../packages/chalk")
+local chalk = require("../lib/chalk")
 
 local grey = chalk.grey
 local red = chalk.red
@@ -24,7 +24,6 @@ local usefulCharacters = {
 }
 
 local templateStrings = {
-	-- string interpolation can be done by constructing the string with the `` characters and then putting brackets {} around the conactenated variable
 	headerError = function(code, message)
 		return bold(white(`{bold(red("error[" .. code .. "]"))}: {message}`))
 	end,
@@ -44,7 +43,9 @@ local templateStrings = {
 		return cyan(`{white(`{fileName}:{startLine}:{endLine}`)}`)
 	end,
 	lineString = function(lineNumber, paddingLength, lineContent, lineOverwrite)
-		return `{cyan(`{(" "):rep(paddingLength)}{lineNumber} {lineOverwrite or usefulCharacters.up}`)} {grey(lineContent)}`
+		return `{cyan(`{(" "):rep(paddingLength)}{lineNumber} {lineOverwrite or usefulCharacters.up}`)} {grey(
+			lineContent
+		)}`
 	end,
 	noteTemplate = function(note, padSize)
 		return white(`{(" "):rep(padSize)} {cyan("=")} {white(note)}`)

@@ -7,7 +7,16 @@ outline: [2, 3]
 CodeSpan is a library designed to create beautiful diagnostics for [Lune](https://github.com/filiptibell/lune).
 It's extremely easy to use, and is designed to be as flexible as possible.
 
-There are a few examples listed below, that should give you a good idea of how to use the library.
+## Installation
+
+Installation is currently possible through either just pasting the code into your project, or using Git submodules.
+More robust installation methods will be available in the future, but there are no widely used package managers for Lune code yet.
+
+### Git Submodule installation
+
+1. Navigate to your project's root directory
+2. Run `git submodule add https://github.com/virtualbutfake/codespan path/to/your/submodule`
+3. Import the module as you normally would.
 
 ## Examples
 

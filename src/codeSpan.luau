@@ -1,13 +1,13 @@
 --[=[
 	@class CodeSpan
 	Represents file(s) that have been annotated with labels, notes, and colors.
-	This class is accessible by accessing the ``file`` field on the main module.
+	This class is accessible by accessing the ``main`` field on the module.
 ]=]
 
 local codeSpan = {}
 
-local chalk = require("../packages/chalk")
-local logger = require("../packages/logger").new(4)
+local chalk = require("../lib/chalk")
+local logger = require("../lib/logger").new(4)
 
 local file = require("file")
 
@@ -71,7 +71,7 @@ end
 ]=]
 function codeSpan.addLabel(self: codeSpan, style: LabelStyle, passedRange: file.fileRange, content: string): codeSpan
 	-- check if a label with this range already exists
-	for _, label in ipairs(self.labels) do
+	for _, label in self.labels do
 		if label.range:getStart() == passedRange:getStart() and label.range:getEnd() == passedRange:getEnd() then
 			logger:warn(
 				"Ignoring added label with range ("
@@ -113,7 +113,7 @@ end
 	@param color { chalkColor }
 	@return CodeSpan
 
-	Colors a range with a set of [Chalk](https://github.com/grilme99/ChalkLua-NoOp) styles/colors. The Chalk version CodeSpan uses is listed [here](https://raw.githubusercontent.com/jsdotlua/jest-lua/f788c4b0d77175fa32e438eeb169b04dede7e3b1/packages/chalk/src/init.luau).
+	Colors a range with a set of [Chalk](https://github.com/grilme99/ChalkLua-NoOp) styles/colors. The Chalk version CodeSpan uses is listed [here](https://github.com/grilme99/ChalkLua-NoOp/blob/main/init.lua).
 
 	Each color or style should be passed seperately, i.e. ``{ Chalk.red, Chalk.bold }`` should be given seperately. The function will then be called on the specified ranges.
 ]=]

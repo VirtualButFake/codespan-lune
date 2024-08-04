@@ -1,1 +1,2 @@
-std = "luau"
+std = "selene_defs"
+exclude = ["Packages/**", "packages/**", "scripts/**", "lib/**"]

@@ -1,3 +1,5 @@
+--!nocheck
+
 -- $Id: utf8.lua 179 2009-04-03 18:10:03Z pasta $
 --
 -- Provides UTF-8 aware string functions implemented in pure lua:
@@ -176,7 +178,7 @@ end
 local function utf8len(s)
 	-- argument checking
 	if type(s) ~= "string" then
-		for k, v in pairs(s) do
+		for k, v in (s) do
 			print('"', tostring(k), '"', tostring(v), '"')
 		end
 		error("bad argument #1 to 'utf8len' (string expected, got " .. type(s) .. ")")
@@ -552,7 +554,7 @@ local function classMatchGenerator(class, plain)
 	table.sort(codes)
 
 	local function inRanges(charCode)
-		for _, r in ipairs(ranges) do
+		for _, r in (ranges) do
 			if r[1] <= charCode and charCode <= r[2] then
 				return true
 			end
@@ -947,7 +949,7 @@ local function matcherGenerator(regex, plain)
 
 		if self.seqStart then
 			local captures = {}
-			for _, pair in pairs(self.captures) do
+			for _, pair in (self.captures) do
 				if pair.empty then
 					table.insert(captures, pair[1])
 				else

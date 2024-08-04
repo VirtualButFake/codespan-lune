@@ -7,8 +7,8 @@ local templates = templateManager.templates
 
 local utf8 = require("../../lib/utf8")
 
-function utils.find(t, pred)
-	for pos, value in ipairs(t) do
+function utils.find(t: { any }, pred: (any) -> boolean)
+	for pos, value in t do
 		if pred(value) then
 			return pos
 		end
@@ -16,7 +16,7 @@ function utils.find(t, pred)
 	return nil
 end
 
-function utils.concat(t, sep)
+function utils.concat(t: { any }, sep: string)
 	local str = ""
 
 	for _, v in t do
@@ -25,7 +25,7 @@ function utils.concat(t, sep)
 			continue
 		end
 
-		str = str .. v .. sep
+		str = str .. `{v} {sep}`
 	end
 
 	return str
@@ -209,7 +209,7 @@ end
 function utils.countArray(t: { any })
 	local count = 0
 
-	for i in pairs(t) do
+	for i in t do
 		count = math.max(count, i)
 	end
 
@@ -226,10 +226,8 @@ function utils.convertRangeToRelative(
 	local relativeRange = range:clone()
 	local lineNumRange = self:getRangeForLine(lineNumber)
 
-	indentAmount = range.shouldBeTrimmed and indentAmount or 0
 	minIndent = minIndent or 0
-
-	indentAmount = indentAmount :: number - minIndent :: number
+	indentAmount = (range.shouldBeTrimmed and indentAmount or 0) - minIndent :: number
 
 	if lineNumRange == nil then
 		error("Line number " .. lineNumber .. " does not exist in file " .. self.name)
@@ -307,13 +305,12 @@ function utils.buildString(line: pendingFormatLine, paddingSize: number): string
 
 	if line.prefixes then
 		local prefix = line.prefixes
-		-- color prefix
 		local charArray = prefix.content
 
 		-- get largest index in charArray
 		local largestIndex = 0
 
-		for index in pairs(charArray) do
+		for index in charArray do
 			largestIndex = math.max(largestIndex, index)
 		end
 

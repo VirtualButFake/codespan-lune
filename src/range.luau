@@ -71,7 +71,7 @@ function range.set(self: range, startPosition: number, endPosition: number)
 	self.endPosition = endPosition
 end
 
---[=[
+--[=[   
 	@method fitsInRange
 	@within Range
 	@param passedRange Range -- The range to check if it fits within the range.
@@ -102,7 +102,7 @@ end
 
 	Checks if the passed range loosely fits within the range. If it does, it returns true, and the start and end positions of the range.
 
-	"Loosely fits" refers to whether any part fits within the range: for example, when passed (10, 20) and (15, 25), it will return true, and (15, 20).
+	"Loosely fits" refers to whether any part fits within the range: for example, when passed (10, 20) and (15, 25), it will return true.
 	You'd use this when you want to check whether ranges are overlapping, but not necessarily fully contained within each other.
 
 ]=]
@@ -150,9 +150,12 @@ end
 	@field startPosition number -- The start position of the range.
 	@field endPosition number -- The end position of the range.
 ]=]
-export type range = typeof(setmetatable({} :: {
-	startPosition: number,
-	endPosition: number,
-}, { __index = range }))
+export type range = typeof(setmetatable(
+	{} :: {
+		startPosition: number,
+		endPosition: number,
+	},
+	{ __index = range }
+))
 
 return range

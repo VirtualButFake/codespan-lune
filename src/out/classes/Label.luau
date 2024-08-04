@@ -68,7 +68,7 @@ function Label.Render(
 	local rangeForLine = config.lineGroup.file:getRangeForLine(config.lineNumber)
 
 	if not rangeForLine then
-		error("Line number " .. config.lineNumber .. " does not exist in file " .. config.lineGroup.file.name)
+		error(`Line number {config.lineNumber} does not exist in file {config.lineGroup.file.name}`)
 	end
 
 	local allLabelsCombined = utils.findLabelsAndColorsForLine(config.codeSpan, rangeForLine)
@@ -83,7 +83,7 @@ function Label.Render(
 	-- check how many of allLabelsCombined are actual multiline labels
 	local labelsOnLine = {}
 
-	for _, labelOrColor in ipairs(allLabelsCombined) do
+	for _, labelOrColor in allLabelsCombined do
 		if labelOrColor.type == "label" then
 			local label = labelOrColor.data :: codeSpan.Label
 
@@ -214,7 +214,7 @@ function Label.Render(
 			},
 		})
 
-		for i, line in ipairs(splitContent) do
+		for i, line in splitContent do
 			if i == 1 then
 				continue
 			end

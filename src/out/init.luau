@@ -1,12 +1,12 @@
 --[=[
     @class Emitter
 
-    This class formats a [CodeSpan] into a string.
+    This class formats a [CodeSpan](CodeSpan) into a string.
     This class is accessible by accessing the ``emitter`` field on the main module.
 ]=]
 local emitter = {}
 
-local chalk = require("../../packages/chalk")
+local chalk = require("../../lib/chalk")
 
 local codeSpan = require("../codeSpan")
 local templateManager = require("../templateManager")
@@ -27,14 +27,17 @@ local function formatLineGroup(self: codeSpan.codeSpan, lineGroupContainer: util
 		overwriteCharacter: string?,
 		isLabel: boolean?
 	)
-		table.insert(lines, {
-			lineNum = lineNum,
-			str = content,
-			prefixes = prefixes,
-			internalOffset = internalOffset,
-			overwriteCharacter = overwriteCharacter,
-			isLabel = isLabel,
-		} :: utils.pendingFormatLine)
+		table.insert(
+			lines,
+			{
+				lineNum = lineNum,
+				str = content,
+				prefixes = prefixes,
+				internalOffset = internalOffset,
+				overwriteCharacter = overwriteCharacter,
+				isLabel = isLabel,
+			} :: utils.pendingFormatLine
+		)
 	end
 
 	local firstLine = lineGroupContainer.lineGroups[1].lineNumbers[1]
@@ -53,7 +56,6 @@ local function formatLineGroup(self: codeSpan.codeSpan, lineGroupContainer: util
 	)
 
 	for _, lineGroup in lineGroupContainer.lineGroups do
-		-- per-linegroup state
 		local stack: {
 			[string]: any,
 			multiLineLabels: {
@@ -78,15 +80,7 @@ local function formatLineGroup(self: codeSpan.codeSpan, lineGroupContainer: util
 			lineGroup.file:getNormalizedContentForRange(lineGroup.combinedLineRange)
 
 		for idx, line in normalizedContent:split("\n") do
-			-- per-line state
-			local subLines: {
-				{
-					content: string,
-					modifications: { utils.colorModification },
-					isLabel: boolean?,
-				}
-			} =
-				{}
+			local subLines: { subLine } = {}
 			local prefix: utils.prefix = {
 				content = {},
 				colors = {},
@@ -99,11 +93,7 @@ local function formatLineGroup(self: codeSpan.codeSpan, lineGroupContainer: util
 				},
 			}
 
-			local function addSubLine(subLine: {
-				content: string,
-				modifications: { utils.colorModification },
-				isLabel: boolean?,
-			}): nil
+			local function addSubLine(subLine: subLine): nil
 				table.insert(subLines, subLine) -- will have sidebar & internal padding applied later
 
 				return
@@ -257,5 +247,11 @@ function emitter.out(self: codeSpan.codeSpan)
 
 	return table.concat(outputLines, "\n")
 end
+
+type subLine = {
+	content: string,
+	modifications: { utils.colorModification },
+	isLabel: boolean?,
+}
 
 return emitter

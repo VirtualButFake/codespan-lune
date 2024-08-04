@@ -14,7 +14,7 @@ function file.range(self: file, start: number, finish: number): fileRange?
 	newRange.file = self
 
 	--[=[
-		@within fileRange
+		@within FileRange
 		@method clone
 		@return FileRange -- A new file range with the same start and end as this one
 	]=]
@@ -23,7 +23,7 @@ function file.range(self: file, start: number, finish: number): fileRange?
 	end
 
 	--[=[
-		@within fileRange
+		@within FileRange
 		@method trim
 		@return FileRange -- Returns the exact same range.
 
@@ -95,13 +95,14 @@ end
 	@within File
 	@param position number -- The position to convert to a line number
 	@return number? -- The line number
-	@return fileRange? -- The range of the line
+	@return FileRange? -- The range of the line
 
 	Given a position as a number, returns the line number and the line range of the line this position is on.
 ]=]
 function file.positionToLine(self: file, position: number): (number?, fileRange?)
 	for i, line in self.lines do
 		local startPos, endPos = line:get()
+
 		if startPos <= position and endPos >= position then
 			return i, line
 		end
@@ -115,7 +116,7 @@ end
 	@within File
 	@param lineStart number -- The start line number
 	@param lineEnd number -- The end line number
-	@return fileRange? -- The range of the lines
+	@return FileRange? -- The range of the lines
 
 	Returns the range created by the start of the first line and the end of the last line.
 ]=]
@@ -132,7 +133,7 @@ end
 	@method getRangeForLine
 	@within File
 	@param line number -- The line number
-	@return fileRange? -- The range of the line
+	@return FileRange? -- The range of the line
 
 	Returns the range of the line number passed.
 ]=]
@@ -149,7 +150,7 @@ end
 	@within File
 	@param startCharacter number -- The start character number
 	@param endCharacter number -- The end character number
-	@return fileRange? -- The range of the characters
+	@return FileRange? -- The range of the characters
 
 	Returns the range of the character numbers passed.
 ]=]
@@ -163,7 +164,7 @@ end
 --[=[
 	@method getContentForRange
 	@within File
-	@param contentRange fileRange -- The range of the content
+	@param contentRange FileRange -- The range of the content
 	@return string? -- The content of the file for the range
 
 	Returns the content of the file for the range passed.
@@ -175,7 +176,7 @@ end
 --[=[
 	@method getNormalizedContentForRange
 	@within File
-	@param contentRange fileRange -- The range of the content
+	@param contentRange FileRange -- The range of the content
 	@return string? -- The content of the file for the range
 
 	Returns the content of the file for the range passed, with the indentation normalized (finds lowest indentation, and remove all preceding indentation).
@@ -184,6 +185,7 @@ function file.getNormalizedContentForRange(self: file, contentRange: fileRange):
 	-- first trim the range to start & end of their lines
 	local startLineNum, startLine = self:positionToLine(contentRange:getStart())
 	local endLineNum, endLine = self:positionToLine(contentRange:getEnd())
+
 	contentRange:set(startLine:getStart(), endLine:getEnd())
 
 	-- now, for each line, capture the amount of spaces or tabs at the start of the line
@@ -274,7 +276,7 @@ end
 	@within File
 	@interface line
 	@field lineNum number -- The line number
-	@field line fileRange -- The range of the line
+	@field line FileRange -- The range of the line
 ]=]
 type line = {
 	lineNum: number,
@@ -284,7 +286,7 @@ type line = {
 --[=[
 	@method getLinesInRange
 	@within File
-	@param contentRange fileRange -- The range of the content
+	@param contentRange FileRange -- The range of the content
 	@return { line } -- The lines of the file for the range
 	
 	Returns the lines of the file for the range passed.
@@ -311,7 +313,7 @@ end
 
 --[=[
 
-	@class fileRange
+	@class FileRange
 	Inherits from [Range](Range), functionally identical but has a few edited methods.
 ]=]
 export type fileRange = {

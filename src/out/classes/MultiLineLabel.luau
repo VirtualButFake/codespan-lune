@@ -145,7 +145,7 @@ function MultiLineLabel.Render(
 		local lineSpan = self.range.file:getLinesInRange(self.range)
 		local lineNums = {}
 
-		for _, l in ipairs(lineSpan) do
+		for _, l in lineSpan do
 			table.insert(lineNums, l.lineNum)
 		end
 
@@ -248,7 +248,7 @@ function MultiLineLabel.RenderEnd(
 				-- check whether this is the only label that starts here
 				local onlyMultiLabel = true
 
-				for _, label in ipairs(config.stack.multiLineLabels) do
+				for _, label in config.stack.multiLineLabels do
 					if label.label.range:getStart() == lineRange:getStart() and label.label ~= self.label then
 						onlyMultiLabel = false
 						break
@@ -324,7 +324,7 @@ function MultiLineLabel.RenderEnd(
 
 			line.createdAsEnd = false
 
-			for i, splitLine in ipairs(splitContent) do
+			for i, splitLine in splitContent do
 				if i == 1 then
 					continue
 				end
